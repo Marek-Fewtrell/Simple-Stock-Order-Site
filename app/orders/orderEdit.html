@@ -1,0 +1,98 @@
+<!-- Order Create/Edit page -->
+<div class="container w3-card-4">
+  <h3 class="w3-container w3-blue">{{ordEdit.actionTitle}} Order</h3>
+  <div class="w3-container w3-padding-8">
+    <div class="w3-container">
+      <!-- Customer Search and Selectory -->
+      <div class="" ng-hide="ordEdit.orderID">
+        <input type="text" ng-model="ordEdit.customerSearch" />
+        <button ng-click="searchUsers()">Search For User</button>
+        <div class="scrollableStuff">
+          <table>
+            <tr>
+              <th>Name</th>
+              <th>Action</th>
+            </tr>
+            <tr ng-repeat="sItem in ordEdit.searchedUserList">
+              <td>{{sItem.name}}</td>
+              <td>
+                <button ng-click="selectUser(sItem.id)">Select</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div ng-show="ordEdit.orderID" class="w3-row">
+        <!-- Display order info -->
+        <h4>Order ID:{{ordEdit.purchaseList.orderID}}</h4>
+        <div class="w3-half w3-padding">
+          <br/> Customer:{{ordEdit.orderInfo.name}}
+          <br/>Status:
+          <select ng-model="ordEdit.orderInfo.status" ng-change="updateStatus()">
+            <option value="done">done</option>
+            <option value="pending">pending</option>
+          </select>
+          <br/>
+        </div>
+        <div class="w3-half">
+          <!-- Stock Item Search and Selector -->
+          <input type="text" ng-model="ordEdit.newItemSearch" />
+          <button ng-click="searchItem()">Search For Stock</button>
+          <div class="scrollableStuff">
+            <table>
+              <tr>
+                <th>Stock Name</th>
+                <th>Price</th>
+                <th>Action</th>
+              </tr>
+              <tr ng-repeat="sItem in ordEdit.searchedStockList">
+                <td>{{sItem.name}}</td>
+                <td>
+                  {{sItem.price|currency:'$'}}</td>
+                <td>
+                  <button ng-click="addItem(sItem)">Add</button>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+        </div>
+        <!-- Order Stock List Display -->
+        <table class="w3-table w3-striped w3-hoverable w3-card-2">
+          <tr class="">
+            <th>Stock</th>
+            <th>Quantity</th>
+            <th>Ind. Price</th>
+            <th>Price</th>
+            <th>Action</th>
+          </tr>
+          <tr ng-repeat="item in ordEdit.purchaseList ">
+            <td>
+              <span>{{item.name}}</span>
+            </td>
+            <td>
+              {{item.quantity}}
+              <button ng-click="editQuantity(item)">Edit</button>
+            </td>
+            <td>{{item.price|currency:'$'}}</td>
+            <td>{{item.price * item.quantity|currency:'$'}}</td>
+            <td>
+              <button ng-click="removeItem(item.id)">Remove</button>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>Total:</td>
+            <td>{{ordEdit.totalPrice|currency:'$'}}</td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+      <div class="w3-right w3-padding-8">
+        <a href="#orders " class="w3-btn w3-red w3-round">Back</a>
+      </div>
+    </div>
+  </div>
+</div>

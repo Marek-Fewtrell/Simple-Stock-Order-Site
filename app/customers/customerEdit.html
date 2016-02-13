@@ -1,0 +1,24 @@
+<!-- Customer Create/Edit page -->
+<div class="w3-card-4">
+  <h3 class="w3-container w3-blue">{{custEdit.actionTitle}} Customer</h3>
+  <div class="w3-container w3-padding-8">
+    <form name="customerForm" novalidate class="w3-container css-form">
+      <label class="w3-label w3-text-blue">Name</label>
+      <input name="custName" class="w3-input w3-border" type="text" ng-model="custEdit.customerItem.name" required />
+      <div ng-show="customerForm.$submitted || customerForm.custName.$touched">
+        <span class="w3-text-red" ng-show="customerForm.custName.$error.required"></span>
+      </div>
+
+      <label class="w3-label w3-text-blue">Contact Details</label>
+      <textarea name="custDetails" class="w3-input w3-border" rows=4 ng-model="custEdit.customerItem.contactDetail" required></textarea>
+      <div ng-show="customerForm.$submitted || customerForm.custDetails.$touched">
+        <span class="w3-text-red" ng-show="customerForm.custDetails.$error.required"></span>
+      </div>
+
+      <div class="w3-right w3-padding-8">
+        <button ng-disabled="customerForm.$invalid" class="w3-btn w3-green w3-round" ng-click="applyAction()">Apply</button>
+        <a href="#customers" class="w3-btn w3-red w3-round">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>

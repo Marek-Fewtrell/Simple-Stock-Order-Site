@@ -1,0 +1,51 @@
+<!-- Main page for website -->
+<!DOCTYPE HTML>
+<html ng-app="StockControlSite">
+
+<head>
+  <title>Stock Control Site</title>
+  <!-- Style Sheets -->
+  <link rel="stylesheet" href="./styles/style.css">
+  <!-- Can be downloaded from http://www.w3schools.com/lib/w3.css -->
+  <link rel="stylesheet" href="./styles/w3.css">
+
+  <!-- Angular related. Can be downloaded from https://www.angularjs.org/ -->
+  <script src="./scripts/angular/angular.js "></script>
+  <script src="./scripts/angular/angular-route.js "></script>
+
+  <!-- Main app file -->
+  <script src="./app.js "></script>
+  <script src="./services/data.js "></script>
+
+  <!-- Inventory related -->
+  <script src="./inventory/inventory.module.js "></script>
+  <script src="./inventory/inventory.js "></script>
+  <script src="./inventory/inventoryEdit.js "></script>
+
+  <!-- Order related -->
+  <script src="./orders/orders.module.js "></script>
+  <script src="./orders/orders.js "></script>
+  <script src="./orders/orderEdit.js "></script>
+
+  <!-- Customer related -->
+  <script src="./customers/customers.module.js "></script>
+  <script src="./customers/customers.js "></script>
+  <script src="./customers/customerEdit.js "></script>
+</head>
+
+<body>
+  <header>
+    <!-- Top bar menu -->
+    <nav class="w3-topnav w3-blue w3-large">
+      <a href="#inventory ">Inventory</a>
+      <a href="#orders ">Orders</a>
+      <a href="#customers ">Customers</a>
+      <span class="w3-right margin-right-10">Stock Site</span>
+    </nav>
+  </header>
+
+  <!-- Location to insert other modules -->
+  <section id="indexSection" ng-view></section>
+</body>
+
+</html>

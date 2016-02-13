@@ -1,0 +1,40 @@
+<!-- Inventory Create/Edit page -->
+<div class="w3-card-4">
+  <h3 class="w3-container w3-blue">{{invenEdit.actionTitle}} Stock Item {{exists}}</h3>
+  <div class="w3-container w3-padding-8">
+
+    <form name="inventoryForm" novalidate class="w3-container css-form">
+      <label class="w3-label w3-text-blue">Stock Name</label>
+      <input name="invenName" type="text" class="w3-input w3-border" ng-model="invenEdit.stockItem.name" required />
+      <div ng-show="inventoryForm.$submitted || inventoryForm.invenName.$touched">
+        <span class="w3-text-red" ng-show="inventoryForm.invenName.$error.required">This is required.</span>
+      </div>
+
+      <label class="w3-label w3-text-blue">Stock Description</label>
+      <textarea name="invenDesc" class="w3-input w3-border" rows=4 ng-model="invenEdit.stockItem.desc" required></textarea>
+      <div ng-show="inventoryForm.$submitted || inventoryForm.invenDesc.$touched">
+        <span class="w3-text-red" ng-show="inventoryForm.invenDesc.$error.required">This is required.</span>
+      </div>
+
+      <label class="w3-label w3-text-blue">Stock Quantity</label>
+      <input name="invenQuant" type="number" class="w3-input w3-border" ng-model="invenEdit.stockItem.quantity" required />
+      <div ng-show="inventoryForm.$submitted || inventoryForm.invenQuant.$touched">
+        <span class="w3-text-red" ng-show="inventoryForm.invenQuant.$error.required">This is required.</span>
+        <span class="w3-text-red" ng-show="inventoryForm.invenQuant.$error.number">This is a number.</span>
+      </div>
+
+      <label class="w3-label w3-text-blue">Stock Price</label>
+      <input name="invenPrice" type="number" class="w3-input w3-border" ng-model="invenEdit.stockItem.price" required />
+      <div ng-show="inventoryForm.$submitted || inventoryForm.invenPrice.$touched">
+        <span class="w3-text-red" ng-show="inventoryForm.invenPrice.$error.required">This is required.</span>
+        <span class="w3-text-red" ng-show="inventoryForm.invenPrice.$error.number">This is a number.</span>
+      </div>
+
+      <div class="w3-right w3-padding-8">
+        <button ng-disabled="inventoryForm.$invalid" class="w3-btn w3-green w3-round" ng-click="applyAction()">Apply</button>
+        <a href="#inventory" class="w3-btn w3-red w3-round">Cancel</a>
+      </div>
+    </form>
+
+  </div>
+</div>

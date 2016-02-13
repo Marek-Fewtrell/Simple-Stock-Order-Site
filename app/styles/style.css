@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+}
+.margin-right-10 {
+  margin-right: 10px;
+}
+#indexSection {
+  margin: 0 15% 0 15%;
+}
+.scrollableStuff {
+  height: 150px;
+  width: 500px;
+  overflow: scroll;
+}
+.errorMsg {}
+
+/**/
+
+.css-form .ng-valid.ng-touched {
+  box-shadow: 0 0 5px green;
+}
+.css-form .ng-invalid.ng-touched {
+  box-shadow: 0 0 10px red;
+}
+.css-form .ng-pristine {
+  /*box-shadow: none;*/
+}
+.css-form .ng-dirty {
+  /*Not needed*/
+}
+.css-form .ng-touched {
+  /*Not needed*/
+}

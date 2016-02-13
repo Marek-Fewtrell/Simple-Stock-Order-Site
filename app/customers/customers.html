@@ -1,0 +1,38 @@
+<!-- Customer List page -->
+<div class="w3-row">
+  <!-- Contains top section of inserted page. Including title, search bar, sort -->
+  <h4 class="w3-third">{{viewName}} List</h4>
+  <!-- Search -->
+  <div class="w3-third w3-container">
+    <label class="w3-label">Search:&nbsp;</label>
+    <input class="w3-input w3-border" ng-model="searchTerm" type="text" />
+  </div>
+  <!-- Sort -->
+  <div class="w3-third w3-container">
+    <label class="w3-label">Sort By:</label>
+    <select class="w3-select w3-border" ng-model="sortOrder">
+      <option value="+id">id</option>
+      <option value="+name">Name</option>
+    </select>
+  </div>
+</div>
+
+<span class="w3-text-red">{{errorMsg}}</span>
+<a class="w3-btn w3-grey w3-round w3-right" href="#customerEdit">Create Item</a>
+<table class="w3-table w3-striped w3-hoverable w3-card-2">
+  <tr class="w3-green">
+    <th>Customer ID</th>
+    <th>Customer Name</th>
+    <th>Contact Details</th>
+    <th>Actions</th>
+  </tr>
+  <tr ng-repeat="user in userList | filter:searchTerm | orderBy:sortOrder">
+    <td>{{user.id}}</td>
+    <td>{{user.name}}</td>
+    <td>{{user.contactDetail}}</td>
+    <td>
+      <a href="#customerEdit/{{user.id}}" class="w3-btn w3-grey w3-round">Edit</a>
+      <button class="w3-btn w3-round" ng-click="deleteCustomer(user.id)">Delete</button>
+    </td>
+  </tr>
+</table>

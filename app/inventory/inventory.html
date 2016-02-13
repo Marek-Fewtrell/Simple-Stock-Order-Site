@@ -1,0 +1,44 @@
+<!-- Inventory List page -->
+<div class="w3-row">
+  <!-- Contains top section of inserted page. Including title, search bar, sort -->
+  <h4 class="w3-third">{{viewName}} List</h4>
+  <!-- Search -->
+  <div class="w3-third w3-container">
+    <label class="w3-label">Search:</label>
+    <input class="w3-input w3-border" ng-model="searchTerm" type="text" />
+  </div>
+  <!-- Sort -->
+  <div class="w3-third w3-container">
+    <label class="w3-label">Sort By:</label>
+    <select class="w3-select w3-border" ng-model="sortOrder">
+      <option value="+id">id</option>
+      <option value="+name">Name</option>
+      <option value="+quantity">Quantity</option>
+      <option value="+price">Price</option>
+    </select>
+  </div>
+</div>
+
+<span class="w3-text-red">{{errorMsg}}</span>
+<a class="w3-btn w3-grey w3-round w3-right" href="#inventoryEdit">Create Item</a>
+<table class="w3-table w3-centered w3-striped w3-hoverable w3-card-2">
+  <tr class="w3-green">
+    <th>ID</th>
+    <th>Name</th>
+    <th>Desc</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Action</th>
+  </tr>
+  <tr ng-repeat="item in stockList | filter:searchTerm | orderBy:sortOrder">
+    <td>{{item.id}}</td>
+    <td>{{item.name}}</td>
+    <td>{{item.desc}}</td>
+    <td>{{item.quantity|number}}</td>
+    <td>{{item.price|currency:'$'}}</td>
+    <td>
+      <a href="#inventoryEdit/{{item.id}}" class="w3-btn w3-grey w3-round">Edit</a>
+      <button class="w3-btn w3-round" ng-click="deleteItem(item.id)">Delete</button>
+    </td>
+  </tr>
+</table>
